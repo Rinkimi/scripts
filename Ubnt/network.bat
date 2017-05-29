@@ -1,0 +1,1 @@
+python C:\scripts\Ubnt\knowhow.py

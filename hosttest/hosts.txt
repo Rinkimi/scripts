@@ -1,0 +1,4 @@
+launcher.eveonline.com
+binaries.eveonline.com
+res.eveonline.ccpgames.com
+imageserver.eveonline.com
