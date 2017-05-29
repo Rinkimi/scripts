@@ -16,7 +16,7 @@ class App(Frame):
         self.gui()
 
     def sql(self, data):
-        conn = sqlite3.connect('Ip_base1.db')
+        conn = sqlite3.connect('C:/bases/Ip_base1.db')
         cur = conn.cursor()
         cur.execute('SELECT Queue, Name, Controller1, Controller2 FROM CCK WHERE number = ' + data)
         result = cur.fetchone()
@@ -42,7 +42,8 @@ class App(Frame):
         self.ramka_q.set(result[0])
 
     def connect(self, ip):
-        plink = 'plink.exe -L 5938:' + ip + ':5938 -ssh 10.69.71.178 -l ssk_operator -i ssk.ppk'
+        key = 'C:/Keys/ssk.ppk'
+        plink = 'plink.exe -L 5938:' + ip + ':5938 -ssh 10.69.71.178 -l ssk_operator -i ' + key
         team = 'C:/Program Files (x86)/TeamViewer/TeamViewer.exe -i 127.0.0.1 --Password 111111'
         self.p0 = Popen(plink)
         self.p1 = Popen(team)

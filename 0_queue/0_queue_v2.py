@@ -26,7 +26,7 @@ class App(tk.Frame):
 
     def base(self, data):
         params = "SELECT cont, cont2, iNode, APC, name FROM queue WHERE num = " + data
-        conn = sqlite3.connect('queue.db')
+        conn = sqlite3.connect('c:/bases/queue.db')
         cur = conn.cursor()
         cur.execute(params)
         res = cur.fetchone()
@@ -141,7 +141,8 @@ class App(tk.Frame):
         self.driver.get(self.apc)
 
     def ssh_connect(self, event, ip):
-        ssh_conn = 'putty.exe -ssh -i key.ppk smihaylov@' + ip
+        key = 'c:/Keys/key.ppk'
+        ssh_conn = 'putty.exe -ssh -i ' + key + ' smihaylov@' + ip
         ssh = subprocess.Popen(ssh_conn, shell=True)
 
     def traffic_spot(self, event, ip):
@@ -243,7 +244,8 @@ class App(tk.Frame):
         self.w1.destroy()
 
     def on_click(self, event, button, ip, ip0):
-        s = 'plink.exe -L 9000:' + ip + ':80 -L 9901:' + ip + ':9901 -ssh ' + ip0 + ' -l smihaylov -i key.ppk'
+        key = 'c:/Keys/key.ppk'
+        s = 'plink.exe -L 9000:' + ip + ':80 -L 9901:' + ip + ':9901 -ssh ' + ip0 + ' -l smihaylov -i ' + key
         self.p0 = subprocess.Popen(s)
         addr = 'http://127.0.0.1:9000'
         self.driver.get(addr)
@@ -257,7 +259,8 @@ class App(tk.Frame):
             self.p1.kill()
             self.p2.kill()
         finally:
-            s = 'plink.exe -L 59801:192.168.10.200:59801 -ssh ' + ip + ' -l smihaylov -i key.ppk'
+            key = 'c:/Keys/key.ppk'
+            s = 'plink.exe -L 59801:192.168.10.200:59801 -ssh ' + ip + ' -l smihaylov -i ' + key
             self.p1 = subprocess.Popen(s)
             self.p2 = subprocess.Popen(self.tems)
 
