@@ -21,6 +21,7 @@ class App(tk.Frame):
             self.apc = ''
             self.inode = ''
             self.tems = 'C:/Program Files (x86)/SICK/TEMS Manager/Ectn.Tems.TemsManager.exe'
+            self.driver = webdriver.Firefox()
             self.gui()
 
     def base(self, data):
@@ -110,7 +111,6 @@ class App(tk.Frame):
         if data == '': return
         self.base(data)
         self.update()
-        self.driver = webdriver.Firefox()
 
     def check(self, ip0, ip1):
         res = os.system("ping -n 1 " + ip0 + ' > NUL')
@@ -220,10 +220,10 @@ class App(tk.Frame):
 
     def b_b(self):
         try:
+            self.driver.quit()
             self.p1.kill()
             self.p2.kill()
         finally:
-            self.driver.quit()
             self.quit()
 
     def cameras(self, ip0):
