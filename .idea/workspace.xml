@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bc9900a9-7e2f-45a5-8b5e-82d404197060" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/0_queue/0_queue_v3.py" afterPath="$PROJECT_DIR$/0_queue/0_queue_v3.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/0_queue/geckodriver.log" afterPath="$PROJECT_DIR$/0_queue/geckodriver.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,25 +19,10 @@
       <file leaf-file-name="0_queue_v2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/0_queue/0_queue_v2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="93" column="104" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="93" selection-end-column="104" />
+            <state relative-caret-position="491">
+              <caret line="140" column="31" lean-forward="true" selection-start-line="114" selection-start-column="4" selection-end-line="140" selection-end-column="33" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#5030#5871#0" expanded="false" />
-                <element signature="e#5911#5938#0" expanded="false" />
-                <element signature="e#5976#6001#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ports_v2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Ports/Ports_v2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="22" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,20 +31,20 @@
       <file leaf-file-name="0_queue_v3.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/0_queue/0_queue_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-294">
-              <caret line="153" column="43" lean-forward="false" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+            <state relative-caret-position="442">
+              <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#675#1006#0" expanded="false" />
-                <element signature="e#1059#1120#0" expanded="false" />
-                <element signature="e#1173#1234#0" expanded="false" />
-                <element signature="e#1414#1545#0" expanded="false" />
-                <element signature="e#1579#2154#0" expanded="false" />
-                <element signature="e#2187#3118#0" expanded="false" />
-                <element signature="e#3152#4567#0" expanded="false" />
-                <element signature="e#4615#4757#0" expanded="false" />
-                <element signature="e#4800#5078#0" expanded="false" />
-                <element signature="e#5112#5370#0" expanded="false" />
+                <element signature="e#685#1016#0" expanded="false" />
+                <element signature="e#1069#1130#0" expanded="false" />
+                <element signature="e#1183#1244#0" expanded="false" />
+                <element signature="e#2357#2459#0" expanded="false" />
+                <element signature="e#2500#2631#0" expanded="false" />
+                <element signature="e#3351#4282#0" expanded="false" />
+                <element signature="e#4316#5731#0" expanded="false" />
+                <element signature="e#5779#5921#0" expanded="false" />
+                <element signature="e#5964#6242#0" expanded="false" />
+                <element signature="e#6276#6534#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -123,20 +110,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ports" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -307,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496074689007</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="New version 0_queue">
+      <created>1496149827394</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1496149827394</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -330,10 +310,10 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1359275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34415585" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34415585" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34415585" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34415585" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -354,7 +334,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Geckologs" />
     <MESSAGE value="New tkinter version of ports" />
-    <option name="LAST_COMMIT_MESSAGE" value="New tkinter version of ports" />
+    <MESSAGE value="New version 0_queue" />
+    <option name="LAST_COMMIT_MESSAGE" value="New version 0_queue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -369,9 +350,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#5030#5871#0" expanded="false" />
-            <element signature="e#5911#5938#0" expanded="false" />
-            <element signature="e#5976#6001#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -413,35 +391,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scp_python_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/video_recorder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-890">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/0_queue/0_queue_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="93" column="104" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="93" selection-end-column="104" />
+        <state relative-caret-position="491">
+          <caret line="140" column="31" lean-forward="true" selection-start-line="114" selection-start-column="4" selection-end-line="140" selection-end-column="33" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#5030#5871#0" expanded="false" />
-            <element signature="e#5911#5938#0" expanded="false" />
-            <element signature="e#5976#6001#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/0_queue/0_queue_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294">
-          <caret line="153" column="43" lean-forward="false" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+        <state relative-caret-position="442">
+          <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#675#1006#0" expanded="false" />
-            <element signature="e#1059#1120#0" expanded="false" />
-            <element signature="e#1173#1234#0" expanded="false" />
-            <element signature="e#1414#1545#0" expanded="false" />
-            <element signature="e#1579#2154#0" expanded="false" />
-            <element signature="e#2187#3118#0" expanded="false" />
-            <element signature="e#3152#4567#0" expanded="false" />
-            <element signature="e#4615#4757#0" expanded="false" />
-            <element signature="e#4800#5078#0" expanded="false" />
-            <element signature="e#5112#5370#0" expanded="false" />
+            <element signature="e#685#1016#0" expanded="false" />
+            <element signature="e#1069#1130#0" expanded="false" />
+            <element signature="e#1183#1244#0" expanded="false" />
+            <element signature="e#2357#2459#0" expanded="false" />
+            <element signature="e#2500#2631#0" expanded="false" />
+            <element signature="e#3351#4282#0" expanded="false" />
+            <element signature="e#4316#5731#0" expanded="false" />
+            <element signature="e#5779#5921#0" expanded="false" />
+            <element signature="e#5964#6242#0" expanded="false" />
+            <element signature="e#6276#6534#0" expanded="false" />
           </folding>
         </state>
       </provider>

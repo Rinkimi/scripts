@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import sqlite3
+import os
 from subprocess import Popen
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -36,6 +37,34 @@ class App(Frame):
         addr = 'http://' + ip + ':8888'
         self.driver.get(addr)
 
+    def check(self, ip0, ip1):
+        res = os.system("ping -n 1 " + ip0 + ' > NUL')
+        res1 = os.system("ping -n 1 " + ip1 + ' > NUL')
+        if res == 0:
+            self.inode_status.config(text='OK')
+            self.inode_status.config(background='green')
+            self.inode_status.config(foreground='white')
+            self.inode_but.config(state='active')
+        else:
+            self.inode_status.config(text='BAD')
+            self.inode_status.config(background='red')
+            self.inode_status.config(foreground='black')
+        if res1 == 0:
+            self.apc_status.config(text='OK')
+            self.apc_status.config(background='green')
+            self.apc_status.config(foreground='white')
+            self.apc_but.config(state='active')
+        else:
+            self.apc_status.config(text='BAD')
+            self.apc_status.config(background='red')
+            self.apc_status.config(foreground='black')
+
+    def inode_url_open(self):
+        self.driver.get(self.inode)
+
+    def apc_url_open(self):
+        self.driver.get(self.apc)
+
     def exit_button(self):
         try:
             self.p1.kill()
@@ -60,12 +89,14 @@ class App(Frame):
         if res[1] is '0':
             self.ip0.set(res[0])
             self.ip0_global = res[0]
+            self.check(res[2], res[3])
             self.buttons()
         else:
             self.ip1.set(res[1])
             self.ip0.set(res[0])
             self.ip0_global = res[0]
             self.ip1_global = res[1]
+            self.check(res[2], res[3])
             self.buttons2()
 
     def buttons(self):
@@ -147,6 +178,13 @@ class App(Frame):
         self.trafic2 = ttk.Button(tfframe, text='Trafickspot c2', state='disable', width=13)
         self.trafic2_xml = ttk.Button(tfframe, text='Trafick_xml c2', state='disable', width=13)
         self.trafic2_ftp = ttk.Button(tfframe, text='Trafick_ftp c2', state='disable', width=13)
+        inodeframe = ttk.Labelframe(content, text='Status', borderwidth=5, width=200, height=50)
+        inode_lb = ttk.Label(inodeframe, text='iNode', width=10)
+        self.inode_status = ttk.Label(inodeframe, width=20)
+        self.inode_but = ttk.Button(inodeframe, text='Open', state='disable')
+        apc_lb = ttk.Label(inodeframe, text='APC', width=10)
+        self.apc_status = ttk.Label(inodeframe, width=20)
+        self.apc_but = ttk.Button(inodeframe, text='Open', state='disable')
         sshframe = ttk.Labelframe(content, text='SSH', borderwidth=5, width=200, height=50)
         self.ssh0 = ttk.Button(sshframe, text='SSH controller 1', state='disable', width=20)
         self.ssh1 = ttk.Button(sshframe, text='SSH controller 2', state='disable', width=20)
@@ -172,14 +210,21 @@ class App(Frame):
         self.trafic2.grid(row=1, column=0)
         self.trafic2_xml.grid(row=1, column=1)
         self.trafic2_ftp.grid(row=1, column=2)
-        sshframe.grid(row=5, column=0, columnspan=3, sticky=(N, S, E, W))
+        inodeframe.grid(row=5, column=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
+        inode_lb.grid(row=0, column=0, sticky=W)
+        self.inode_status.grid(row=0, column=1)
+        self.inode_but.grid(row=0, column=2, sticky=E)
+        apc_lb.grid(row=1, column=0, sticky=W)
+        self.apc_status.grid(row=1, column=1)
+        self.apc_but.grid(row=1, column=2, sticky=E)
+        sshframe.grid(row=7, column=0, columnspan=3, sticky=(N, S, E, W))
         self.ssh0.grid(row=0, column=0, sticky=(W, E))
         self.ssh1.grid(row=0, column=1, sticky=(W, E))
-        temsframe.grid(row=6, column=0, columnspan=3, sticky=(N, S, E, W))
+        temsframe.grid(row=8, column=0, columnspan=3, sticky=(N, S, E, W))
         self.tems0.grid(row=0, column=0, sticky=(W, E))
         self.tems1.grid(row=0, column=1, sticky=(W, E))
-        self.off_button.grid(row=7, column=0, columnspan=4, sticky=(W, E))
-        self.listbox.grid(row=0, column=3, rowspan=7, sticky=(N, S, E, W))
+        self.off_button.grid(row=9, column=0, columnspan=4, sticky=(W, E))
+        self.listbox.grid(row=0, column=3, rowspan=9, sticky=(N, S, E, W))
 
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
