@@ -31,20 +31,24 @@
       <file leaf-file-name="0_queue_v3.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/0_queue/0_queue_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
+            <state relative-caret-position="313">
+              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#685#1016#0" expanded="false" />
-                <element signature="e#1069#1130#0" expanded="false" />
-                <element signature="e#1183#1244#0" expanded="false" />
-                <element signature="e#2357#2459#0" expanded="false" />
-                <element signature="e#2500#2631#0" expanded="false" />
-                <element signature="e#3351#4282#0" expanded="false" />
-                <element signature="e#4316#5731#0" expanded="false" />
-                <element signature="e#5779#5921#0" expanded="false" />
-                <element signature="e#5964#6242#0" expanded="false" />
-                <element signature="e#6276#6534#0" expanded="false" />
+                <element signature="e#926#1257#0" expanded="false" />
+                <element signature="e#1310#1371#0" expanded="false" />
+                <element signature="e#1424#1485#0" expanded="false" />
+                <element signature="e#1526#2617#0" expanded="false" />
+                <element signature="e#2664#2721#0" expanded="false" />
+                <element signature="e#2766#2821#0" expanded="false" />
+                <element signature="e#3001#3132#0" expanded="false" />
+                <element signature="e#3166#3819#0" expanded="false" />
+                <element signature="e#3852#4783#0" expanded="false" />
+                <element signature="e#4817#6232#0" expanded="false" />
+                <element signature="e#6280#6422#0" expanded="false" />
+                <element signature="e#6465#6743#0" expanded="false" />
+                <element signature="e#6777#7035#0" expanded="false" />
+                <element signature="e#7064#11601#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -287,7 +291,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496149827394</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added inode and apc status check">
+      <created>1496155178673</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1496155178673</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -335,11 +346,12 @@
     <MESSAGE value="Geckologs" />
     <MESSAGE value="New tkinter version of ports" />
     <MESSAGE value="New version 0_queue" />
-    <option name="LAST_COMMIT_MESSAGE" value="New version 0_queue" />
+    <MESSAGE value="Added inode and apc status check" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added inode and apc status check" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -419,20 +431,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/0_queue/0_queue_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="226" column="52" lean-forward="false" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
+        <state relative-caret-position="313">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#685#1016#0" expanded="false" />
-            <element signature="e#1069#1130#0" expanded="false" />
-            <element signature="e#1183#1244#0" expanded="false" />
-            <element signature="e#2357#2459#0" expanded="false" />
-            <element signature="e#2500#2631#0" expanded="false" />
-            <element signature="e#3351#4282#0" expanded="false" />
-            <element signature="e#4316#5731#0" expanded="false" />
-            <element signature="e#5779#5921#0" expanded="false" />
-            <element signature="e#5964#6242#0" expanded="false" />
-            <element signature="e#6276#6534#0" expanded="false" />
+            <element signature="e#926#1257#0" expanded="false" />
+            <element signature="e#1310#1371#0" expanded="false" />
+            <element signature="e#1424#1485#0" expanded="false" />
+            <element signature="e#1526#2617#0" expanded="false" />
+            <element signature="e#2664#2721#0" expanded="false" />
+            <element signature="e#2766#2821#0" expanded="false" />
+            <element signature="e#3001#3132#0" expanded="false" />
+            <element signature="e#3166#3819#0" expanded="false" />
+            <element signature="e#3852#4783#0" expanded="false" />
+            <element signature="e#4817#6232#0" expanded="false" />
+            <element signature="e#6280#6422#0" expanded="false" />
+            <element signature="e#6465#6743#0" expanded="false" />
+            <element signature="e#6777#7035#0" expanded="false" />
+            <element signature="e#7064#11601#0" expanded="false" />
           </folding>
         </state>
       </provider>

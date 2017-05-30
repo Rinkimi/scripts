@@ -13,12 +13,22 @@ class App(Frame):
         self.root = parent
         self.ip0 = StringVar()
         self.ip1 = StringVar()
-        self.inode = StringVar()
-        self.apc = StringVar()
+        self.inode = ''
+        self.apc = ''
         self.name = StringVar()
         self.tems = 'C:/Program Files (x86)/SICK/TEMS Manager/Ectn.Tems.TemsManager.exe'
         self.driver = webdriver.Firefox()
         self.gui()
+        root.protocol('WM_DELETE_WINDOW', self.exit_event)
+
+    def exit_event(self):
+        try:
+            self.p1.kill()
+            self.p2.kill()
+            self.driver.quit()
+        finally:
+            print('Good bye!')
+            root.destroy()
 
     def traffic_spot(self, event, ip):
         addr = 'http://' + ip + ':8088'
@@ -45,6 +55,8 @@ class App(Frame):
             self.inode_status.config(background='green')
             self.inode_status.config(foreground='white')
             self.inode_but.config(state='active')
+            self.inode = ip0
+            self.inode_but.bind("<Button-1>", self.inode_url_open)
         else:
             self.inode_status.config(text='BAD')
             self.inode_status.config(background='red')
@@ -54,16 +66,20 @@ class App(Frame):
             self.apc_status.config(background='green')
             self.apc_status.config(foreground='white')
             self.apc_but.config(state='active')
+            self.apc = ip1
+            self.apc_but.bind("<Button-1>", self.apc_url_open)
         else:
             self.apc_status.config(text='BAD')
             self.apc_status.config(background='red')
             self.apc_status.config(foreground='black')
 
-    def inode_url_open(self):
-        self.driver.get(self.inode)
+    def inode_url_open(self, event):
+        adr = 'http://' + self.inode
+        self.driver.get(adr)
 
-    def apc_url_open(self):
-        self.driver.get(self.apc)
+    def apc_url_open(self, event):
+        adr = 'http://' + self.apc
+        self.driver.get(adr)
 
     def exit_button(self):
         try:
