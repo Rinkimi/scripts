@@ -3,7 +3,7 @@ import time
 from tkinter import ttk
 import sqlite3
 import os
-from subprocess import Popen
+from subprocess import Popen, PIPE
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -133,7 +133,7 @@ class App(Frame):
         self.trafic1.bind("<Button-1>", lambda event: self.traffic_spot(event, self.ip0_global))
         self.trafic1_xml.bind("<Button-1>", lambda event: self.traffic_spot_xml(event, self.ip0_global))
         self.trafic1_ftp.bind("<Button-1>", lambda event: self.traffic_spot_ftp(event, self.ip0_global))
-        self.camera.bind("<Button-1>", lambda event: self.cameras(self.ip0_global))
+        self.camera.bind("<Button-1>", lambda event: self.cameras_check(self.ip0_global))
 
     def buttons2(self):
         self.trafic1.config(state='active')
@@ -157,7 +157,7 @@ class App(Frame):
         self.trafic2_xml.bind("<Button-1>", lambda event: self.traffic_spot_xml(event, self.ip1_global))
         self.trafic1_ftp.bind("<Button-1>", lambda event: self.traffic_spot_ftp(event, self.ip0_global))
         self.trafic2_ftp.bind("<Button-1>", lambda event: self.traffic_spot_ftp(event, self.ip1_global))
-        self.camera.bind("<Button-1>", lambda event: self.cameras(self.ip0_global))
+        self.camera.bind("<Button-1>", lambda event: self.cameras_check(self.ip0_global))
 
     def ssh_connect(self, event, ip):
         key = 'c:/Keys/key.ppk'
@@ -260,33 +260,55 @@ class App(Frame):
         content.columnconfigure(4, weight=1)
         content.rowconfigure(1, weight=1)
 
-    def cameras(self, ip0):
-        ip = []
+    def cameras_check(self, ip):
+        key = ' -i c:/keys/key.ppk '
+        user = ' -l smihaylov '
+        self.ip_up = []
+        params = "SELECT Camera FROM cameras"
+        conn = sqlite3.connect('c:/bases/queue.db')
+        cur = conn.cursor()
+        cur.execute(params)
+        cam = cur.fetchall()
+        conn.close()
+        for i in cam:
+            command = ' ping -c 1 -W 5 ' + i[0]
+            s = 'plink.exe -batch -ssh ' + ip + key + user + command
+            proc = Popen(s, stdout=PIPE, stderr=PIPE)
+            r = proc.communicate()
+            res = r[0].decode('utf-8')
+            res = r[0].decode('utf-8').rsplit(' received,', 1)[0].split(', ', 1)[1]
+            if res == '1':
+                self.ip_up.append(i)
+            proc.kill()
+        self.cameras(self.ip0_global, self.ip_up)
+
+    def cameras(self, ip0, ip):
         self.w1 = Toplevel()
-        exit_but = Button(self.w1, text='Close', command=self.new_w_close).grid(row=2, column=0, columnspan=4)
-        with open('cameras.txt') as f:
-            l = f.read().splitlines()
-            for i in l:
-                but = ttk.Button(self.w1)
-                but["text"] = str(i)
-                but.bind("<Button-1>", lambda event, but=but, i=i, ip0=ip0: self.on_click(event, but, i, ip0))
-                but.grid(row=0, column=l.index(i))
+        exit_but = ttk.Button(self.w1, text='Close', command=self.new_w_close)
+        exit_but.grid(row=2, column=0, columnspan=4)
+        for i in ip:
+            but = ttk.Button(self.w1)
+            but["text"] = str(i[0])
+            but.bind("<Button-1>", lambda event, but=but, i=i, ip0=ip0: self.on_click(event, but, i[0], ip0))
+            but.grid(row=0, column=ip.index(i))
 
     def new_w_close(self):
-        self.p0.terminate()
-        self.w1.destroy()
+        try:
+            self.p0.kill()
+        finally:
+            self.w1.destroy()
+            print("Okay!")
 
     def on_click(self, event, button, ip, ip0):
-        key = 'c:/Keys/key.ppk'
-        s = 'plink.exe -L 9000:' + ip + ':80 -L 9901:' + ip + ':9901 -ssh ' + ip0 + ' -l smihaylov -i ' + key
-        self.p0 = Popen(s)
-        time.sleep(3)
-        addr = 'http://127.0.0.1:9000'
-        self.driver.get(addr)
-        but = Button(self.w1, text='Disconnect', command=self.disconn).grid(row=2, column=0, sticky='w, e')
-
-    def disconn(self):
-        self.p0.terminate()
+        try:
+            self.p0.terminate()
+        finally:
+            key = 'c:/Keys/key.ppk'
+            s = 'plink.exe -L 9000:' + ip + ':80 -L 9901:' + ip + ':9901 -ssh ' + ip0 + ' -l smihaylov -i ' + key
+            self.p0 = Popen(s)
+            time.sleep(3)
+            addr = 'http://127.0.0.1:9000'
+            self.driver.get(addr)
 
 if __name__ == '__main__':
     root = Tk()
