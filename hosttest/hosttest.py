@@ -1,5 +1,6 @@
 import os
 import socket
+import csv
 
 
 def ping(x):
@@ -34,7 +35,7 @@ def hput(x):
 res = {}
 up = []
 down = []
-hosts = hput('hosts.txt')
+hosts = hput('list.csv')
 lookup(hosts)
 print('Hosts: ', up, ' is up!')
 print('Hosts: ', down, ' is down!')

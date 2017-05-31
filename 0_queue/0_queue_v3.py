@@ -1,4 +1,5 @@
 from tkinter import *
+import time
 from tkinter import ttk
 import sqlite3
 import os
@@ -126,11 +127,13 @@ class App(Frame):
         self.ssh1.config(state='disable')
         self.tems0.config(state='active')
         self.tems1.config(state='disable')
+        self.camera.config(state='active')
         self.ssh0.bind("<Button-1>", lambda event: self.ssh_connect(event, self.ip0_global))
         self.tems0.bind("<Button-1>", lambda event: self.lazors(event, self.ip0_global))
         self.trafic1.bind("<Button-1>", lambda event: self.traffic_spot(event, self.ip0_global))
         self.trafic1_xml.bind("<Button-1>", lambda event: self.traffic_spot_xml(event, self.ip0_global))
         self.trafic1_ftp.bind("<Button-1>", lambda event: self.traffic_spot_ftp(event, self.ip0_global))
+        self.camera.bind("<Button-1>", lambda event: self.cameras(self.ip0_global))
 
     def buttons2(self):
         self.trafic1.config(state='active')
@@ -143,6 +146,7 @@ class App(Frame):
         self.ssh1.config(state='active')
         self.tems0.config(state='active')
         self.tems1.config(state='active')
+        self.camera.config(state='active')
         self.ssh0.bind("<Button-1>", lambda event: self.ssh_connect(event, self.ip0_global))
         self.tems0.bind("<Button-1>", lambda event: self.lazors(event, self.ip0_global))
         self.ssh1.bind("<Button-1>", lambda event: self.ssh_connect(event, self.ip1_global))
@@ -153,6 +157,7 @@ class App(Frame):
         self.trafic2_xml.bind("<Button-1>", lambda event: self.traffic_spot_xml(event, self.ip1_global))
         self.trafic1_ftp.bind("<Button-1>", lambda event: self.traffic_spot_ftp(event, self.ip0_global))
         self.trafic2_ftp.bind("<Button-1>", lambda event: self.traffic_spot_ftp(event, self.ip1_global))
+        self.camera.bind("<Button-1>", lambda event: self.cameras(self.ip0_global))
 
     def ssh_connect(self, event, ip):
         key = 'c:/Keys/key.ppk'
@@ -207,6 +212,8 @@ class App(Frame):
         temsframe = ttk.Labelframe(content, text='TEMS', borderwidth=5, width=200, height=50)
         self.tems0 = ttk.Button(temsframe, text='TEMS controller 1', state='disable', width=20)
         self.tems1 = ttk.Button(temsframe, text='TEMS controller 2', state='disable', width=20)
+        camerasframe = ttk.Labelframe(content, text='Cameras', borderwidth=5, width=200, height=50)
+        self.camera = ttk.Button(camerasframe, text='Камеры', state='disable', width=20)
         self.off_button = ttk.Button(content, text='Disconnect', command=self.exit_button)
         self.listbox = Listbox(content, relief="groove", selectmode=SINGLE)
         self.listfill()
@@ -239,8 +246,10 @@ class App(Frame):
         temsframe.grid(row=8, column=0, columnspan=3, sticky=(N, S, E, W))
         self.tems0.grid(row=0, column=0, sticky=(W, E))
         self.tems1.grid(row=0, column=1, sticky=(W, E))
-        self.off_button.grid(row=9, column=0, columnspan=4, sticky=(W, E))
-        self.listbox.grid(row=0, column=3, rowspan=9, sticky=(N, S, E, W))
+        camerasframe.grid(row=9, column=0, columnspan=3, sticky=(N, S, E, W))
+        self.camera.grid(row=0, column=0, sticky=(W, E))
+        self.off_button.grid(row=10, column=0, columnspan=4, sticky=(W, E))
+        self.listbox.grid(row=0, column=3, rowspan=10, sticky=(N, S, E, W))
 
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
@@ -251,6 +260,33 @@ class App(Frame):
         content.columnconfigure(4, weight=1)
         content.rowconfigure(1, weight=1)
 
+    def cameras(self, ip0):
+        ip = []
+        self.w1 = Toplevel()
+        exit_but = Button(self.w1, text='Close', command=self.new_w_close).grid(row=2, column=0, columnspan=4)
+        with open('cameras.txt') as f:
+            l = f.read().splitlines()
+            for i in l:
+                but = ttk.Button(self.w1)
+                but["text"] = str(i)
+                but.bind("<Button-1>", lambda event, but=but, i=i, ip0=ip0: self.on_click(event, but, i, ip0))
+                but.grid(row=0, column=l.index(i))
+
+    def new_w_close(self):
+        self.p0.terminate()
+        self.w1.destroy()
+
+    def on_click(self, event, button, ip, ip0):
+        key = 'c:/Keys/key.ppk'
+        s = 'plink.exe -L 9000:' + ip + ':80 -L 9901:' + ip + ':9901 -ssh ' + ip0 + ' -l smihaylov -i ' + key
+        self.p0 = Popen(s)
+        time.sleep(3)
+        addr = 'http://127.0.0.1:9000'
+        self.driver.get(addr)
+        but = Button(self.w1, text='Disconnect', command=self.disconn).grid(row=2, column=0, sticky='w, e')
+
+    def disconn(self):
+        self.p0.terminate()
 
 if __name__ == '__main__':
     root = Tk()
