@@ -275,7 +275,6 @@ class App(Frame):
             s = 'plink.exe -batch -ssh ' + ip + key + user + command
             proc = Popen(s, stdout=PIPE, stderr=PIPE)
             r = proc.communicate()
-            res = r[0].decode('utf-8')
             res = r[0].decode('utf-8').rsplit(' received,', 1)[0].split(', ', 1)[1]
             if res == '1':
                 self.ip_up.append(i)
