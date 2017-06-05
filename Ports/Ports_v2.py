@@ -23,21 +23,32 @@ class App(Frame):
         cur.execute('SELECT Queue, Name, Controller1, Controller2 FROM CCK WHERE number = ' + data)
         result = cur.fetchone()
         conn.close()
-        self.ip0 = result[2]
-        self.ip1 = result[3]
-        if self.ip1 == '':
-            self.control1.config(state='active')
-            self.control1.bind("<Button-1>", lambda event: self.connect(self.ip0))
-            self.control2.config(state='disable')
+        if result is None:
+            self.error_messg()
         else:
-            self.control1.config(state='active')
-            self.control1.bind("<Button-1>", lambda event: self.connect(self.ip0))
-            self.control2.config(state='active')
-            self.control2.bind("<Button-1>", lambda event: self.connect(self.ip1))
-        self.name_v.set(result[1])
-        self.ip_v.set(result[2])
-        self.ip_v2.set(result[3])
-        self.ramka_q.set(result[0])
+            self.ip0 = result[2]
+            self.ip1 = result[3]
+            if self.ip1 == '':
+                self.control1.config(state='active')
+                self.control1.bind("<Button-1>", lambda event: self.connect(self.ip0))
+                self.control2.config(state='disable')
+            else:
+                self.control1.config(state='active')
+                self.control1.bind("<Button-1>", lambda event: self.connect(self.ip0))
+                self.control2.config(state='active')
+                self.control2.bind("<Button-1>", lambda event: self.connect(self.ip1))
+            self.name_v.set(result[1])
+            self.ip_v.set(result[2])
+            self.ip_v2.set(result[3])
+            self.ramka_q.set(result[0])
+
+    def error_messg(self):
+        top = Toplevel()
+        label = Label(top, text='Такой рамки не существет!')
+        label.grid(row=0, column=0, sticky=(W, E, S, N))
+        self.name.delete(0, 'end')
+        exit_but = Button(top, text='OK', command=top.destroy)
+        exit_but.grid(row=1,column=0,sticky=(W ,E ,S ,N))
 
     def connect(self, ip):
         try:
@@ -68,7 +79,7 @@ class App(Frame):
         content = ttk.Frame(root, padding=(3, 3, 12, 12))
         self.frame = ttk.Frame(content, borderwidth=5, relief="sunken", width=200, height=100)
         namelbl = ttk.Label(content, text="Введите номер рамки:")
-        name = ttk.Entry(content, textvariable=self.entry)
+        self.name = ttk.Entry(content, textvariable=self.entry)
         conn = ttk.Button(content, text='Connect')
         self.control1 = ttk.Button(content, text='Контроллер 1', state='disable')
         self.control2 = ttk.Button(content, text='Контроллер 2', state='disable')
@@ -84,7 +95,7 @@ class App(Frame):
         content.grid(column=0, row=0, sticky=(N, S, E, W))
         self.frame.grid(column=0, row=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
         namelbl.grid(column=3, row=0, columnspan=2, sticky=(N, W, E, S))
-        name.grid(column=3, row=1, columnspan=2, sticky=(N, E, W), pady=5)
+        self.name.grid(column=3, row=1, columnspan=2, sticky=(N, E, W), pady=5)
         conn.grid(column=3, row=2, columnspan=2, sticky=(N, E, W, S))
         self.control1.grid(row=2, column=0)
         self.control2.grid(row=2, column=1)
